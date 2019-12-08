@@ -78,7 +78,7 @@ def restart():
     # Restart bot on POST -- valid form required
     if request.method == 'POST' and form.validate():
         subprocess.call(['../runBot.sh'])
-        return "<h1>The bot has been restarted</h1>"
+        return "The bot has been restarted"
 
     # Send info to index.html
     return render_template('index.html', form=form)
