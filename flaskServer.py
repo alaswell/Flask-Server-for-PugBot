@@ -7,10 +7,12 @@ from wtforms import Form, validators, SubmitField, TextField, ValidationError
 import os
 import subprocess
 
+
 def valid_response(form, field):
     secret_key = "secret"
     if field.data != secret_key:
         raise ValidationError("That is not the correct answer.")
+
 
 class ReusableForm(Form):
     """User entry form for challenge/response check"""
@@ -50,19 +52,17 @@ class ReusableForm(Form):
 
     # Security question
     answer = TextField(
-        choice(questions),
-        validators=[
-            validators.InputRequired(),
-            valid_response,
-        ],
+        choice(questions), validators=[validators.InputRequired(), valid_response]
     )
 
     # Submit button
     submit = SubmitField("Enter")
 
+
 app = Flask(__name__)
 
-@app.route('/status', methods=['GET'])
+
+@app.route("/status", methods=["GET"])
 def status():
     pid = os.popen("pgrep -f 'pugbot.py'").read()
     if len(pid) <= 5:
@@ -70,17 +70,19 @@ def status():
     else:
         return "<h1>The bot is UP</h1>"
 
-@app.route('/restart', methods=['GET', 'POST'])
+
+@app.route("/restart", methods=["GET", "POST"])
 def restart():
     # Create form
     form = ReusableForm(request.form)
 
     # Restart bot on POST -- valid form required
-    if request.method == 'POST' and form.validate():
-        subprocess.call(['../runBot.sh'])
+    if request.method == "POST" and form.validate():
+        subprocess.call(["../runBot.sh"])
         return "<h1>The bot has been restarted</h1>"
 
     # Send info to index.html
-    return render_template('index.html', form=form)
+    return render_template("index.html", form=form)
 
-app.run(host='127.0.0.1', port=8000, debug=True)
+
+app.run(host="127.0.0.1", port=8000, debug=True)
