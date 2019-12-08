@@ -12,7 +12,6 @@ def valid_response(form, field):
     if field.data != secret_key:
         raise ValidationError("That is not the correct answer.")
 
-
 class ReusableForm(Form):
     """User entry form for challenge/response check"""
 
