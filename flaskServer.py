@@ -7,7 +7,6 @@ from wtforms import Form, validators, SubmitField, TextField, ValidationError
 import os
 import subprocess
 
-
 def valid_response(form, field):
     secret_key = "secret"
     if field.data != secret_key:
