@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restart the Fortress Forever Pickup Bot</title>
+</head>
+<body>
+    <div class ="container">
+        <h1>
+            <center>You will need to authenticate by answering the question below first</center>
+        </h1>
+
+        {% block content %}
+        {% for message in form.answer.errors %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+
+        <form method=post>
+            {{ form.answer.label }}
+            {{ form.answer }}
+
+            {{ form.submit }}
+        </form>
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+Unexpected message <RCONMessage 0 AUTH_RESPONSE 0B>
+ * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+ * Restarting with stat
+Unexpected message <RCONMessage 0 AUTH_RESPONSE 0B>
+ * Debugger is active!
+ * Debugger PIN: 133-268-979
+127.0.0.1 - - [08/Dec/2019 21:08:16] "POST / HTTP/1.0" 200 -
+127.0.0.1 - - [08/Dec/2019 21:08:44] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [08/Dec/2019 21:10:40] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [08/Dec/2019 21:10:47] "POST / HTTP/1.0" 200 -
+127.0.0.1 - - [08/Dec/2019 21:22:29] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [08/Dec/2019 21:31:02] "GET / HTTP/1.0" 200 -
+ * Detected change in '/home/ubuntu/PugBot-for-Discord/pugbot.py', reloading
+Task exception was never retrieved
+future: <Task finished coro=<Client._run_event() done, defined at /home/ubuntu/.local/lib/python3.6/site-packages/discord/client.py:304> exception=SystemExit(3,)>
+Traceback (most recent call last):
+  File "/home/ubuntu/PugBot-for-Discord/pugbot.py", line 3590, in <module>
+    client.loop.run_until_complete(Bot.start(token))
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 471, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 438, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 1451, in _run_once
+    handle._run()
+  File "/usr/lib/python3.6/asyncio/events.py", line 145, in _run
+    self._callback(*self._args)
+  File "/home/ubuntu/.local/lib/python3.6/site-packages/discord/client.py", line 307, in _run_event
+    yield from getattr(self, event)(*args, **kwargs)
+  File "/home/ubuntu/PugBot-for-Discord/pugbot.py", line 3562, in on_ready
+    # app.run(host='127.0.0.1', port=8000, debug=True)
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 990, in run
+    run_simple(host, port, self, **options)
+  File "/usr/local/lib/python3.6/dist-packages/werkzeug/serving.py", line 1008, in run_simple
+    run_with_reloader(inner, extra_files, reloader_interval, reloader_type)
+  File "/usr/local/lib/python3.6/dist-packages/werkzeug/_reloader.py", line 337, in run_with_reloader
+    reloader.run()
+  File "/usr/local/lib/python3.6/dist-packages/werkzeug/_reloader.py", line 213, in run
+    self.trigger_reload(filename)
+  File "/usr/local/lib/python3.6/dist-packages/werkzeug/_reloader.py", line 189, in trigger_reload
+    sys.exit(3)
+SystemExit: 3
+ * Restarting with stat
+Unexpected message <RCONMessage 0 AUTH_RESPONSE 0B>
