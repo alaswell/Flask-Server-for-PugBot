@@ -9,10 +9,12 @@ import os
 import subprocess
 import time
 
+
 def valid_response(form, field):
     secret_key = "secret"
     if field.data != secret_key:
         raise ValidationError("That is not the correct answer.")
+
 
 class ReusableForm(Form):
     """User entry form for challenge/response check"""
@@ -58,33 +60,35 @@ class ReusableForm(Form):
     # Submit button
     submit = SubmitField("Enter")
 
+
 app = Flask(__name__)
-app.config['MONGO_DBNAME'] = 'database'
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/database'
+app.config["MONGO_DBNAME"] = "database"
+app.config["MONGO_URI"] = "mongodb://localhost:27017/database"
 mongo = PyMongo(app)
+
 
 @app.route("/maps")
 def maps():
     collection = getattr(mongo.db, "maps")
-    data = [item for item in collection.find({}, {'_id': 0})]
-    return render_template('maps.html', data=data)
+    data = [item for item in collection.find({}, {"_id": 0})]
+    return render_template("maps.html", data=data)
 
 
 @app.route("/pickups")
 def pickups():
     collection = getattr(mongo.db, "pickups")
-    data = [item for item in collection.find({}, {'_id': 0})]
+    data = [item for item in collection.find({}, {"_id": 0})]
     for pug in data:
         # set up human readable timestamp
-        pug['time'] = time.asctime( time.localtime(pug['time']))
-    return render_template('pickups.html', data=data)
+        pug["time"] = time.asctime(time.localtime(pug["time"]))
+    return render_template("pickups.html", data=data)
 
 
 @app.route("/servers")
 def servers():
     collection = getattr(mongo.db, "servers")
-    data = [item for item in collection.find({}, {'_id': 0, 'passwd': 0, 'rcon': 0})]
-    return render_template('servers.html', data=data)
+    data = [item for item in collection.find({}, {"_id": 0, "passwd": 0, "rcon": 0})]
+    return render_template("servers.html", data=data)
 
 
 @app.route("/status", methods=["GET"])
