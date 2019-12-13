@@ -59,8 +59,8 @@ class ReusableForm(Form):
     submit = SubmitField("Enter")
 
 app = Flask(__name__)
-app.config['MONGO_DBNAME'] = 'FortressForever'
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/FortressForever'
+app.config['MONGO_DBNAME'] = 'database'
+app.config['MONGO_URI'] = 'mongodb://localhost:27017/database'
 mongo = PyMongo(app)
 
 @app.route("/maps")
