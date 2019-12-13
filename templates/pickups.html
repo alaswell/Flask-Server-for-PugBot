@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fortress Forever Pickup Bot Pickups</title>
+</head>
+<style>
+    th, td {
+        padding: 15px;
+    }
+</style>
+<body>
+    <div class ="container">
+        <center>
+        <h1>
+            <center>Pickups</center>
+        </h1>
+
+        <h2>
+            <table border="1">
+                <tr>
+                    <td><center>Date</center></td>
+                    <td><center>Map</center></td>
+                    <td><center>Red Team Players</center></td>
+                    <td><center>Blue Team Players</center></td>
+                </tr>
+                {% for item in data %}
+                <tr>
+                    <td>{{ item['time'] }}</td>
+                    <td>{{ item['map'] }}</td>
+                    <td>{{ item['redteam'] }}</td>
+                    <td>{{ item['blueteam'] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </h2>
+        </center>
+    </div>
+</body>
+</html>

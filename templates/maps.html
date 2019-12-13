@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fortress Forever Pickup Bot Map List</title>
+</head>
+<style>
+    th, td {
+        padding: 15px;
+    }
+</style>
+<body>
+    <div class ="container">
+        <center>
+        <h1>
+            <center>Maps</center>
+        </h1>
+
+        <h2>
+            <table border="1">
+                <tr>
+                    <th><center>Map Name</center></th>
+                    <th><center>Aliases</center></th>
+                </tr>
+                {% for item in data %}
+                <tr>
+                    <td>{{ item['name'] }}</td>
+                    <td>{{ item['aliases'] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </h2>
+        </center>
+    </div>
+</body>
+</html>
