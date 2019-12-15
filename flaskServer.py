@@ -91,15 +91,6 @@ def servers():
     return render_template("servers.html", data=data)
 
 
-@app.route("/status", methods=["GET"])
-def status():
-    pid = os.popen("pgrep -f 'pugbot.py'").read()
-    if len(pid) <= 5:
-        return "<h1>The bot is DOWN</h1>"
-    else:
-        return "<h1>The bot is UP</h1>"
-
-
 @app.route("/restart", methods=["GET", "POST"])
 def restart():
     # Create form
