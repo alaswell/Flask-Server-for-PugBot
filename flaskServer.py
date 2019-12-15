@@ -5,7 +5,6 @@ from flask import Flask, render_template, request
 from flask_pymongo import PyMongo
 from random import choice
 from wtforms import Form, validators, SubmitField, TextField, ValidationError
-import os
 import subprocess
 import time
 
