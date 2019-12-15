@@ -1,22 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Pickup Bot Pickups</title>
-</head>
-<style>
-    th, td {
-        padding: 15px;
-    }
-</style>
-<body>
+{% extends "layout.html" %}
+{% block content %}
     <div class ="container">
         <center>
         <h1>
             <center>Pickups</center>
         </h1>
 
-        <h2>
+        <h1>
             <table border="1">
                 <tr>
                     <td><center>Date</center></td>
@@ -33,8 +25,8 @@
                 </tr>
                 {% endfor %}
             </table>
-        </h2>
+        </h1>
         </center>
     </div>
-</body>
+{% endblock %}
 </html>

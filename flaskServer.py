@@ -110,8 +110,8 @@ def restart():
         subprocess.call(["../runBot.sh"])
         return "<h1>The bot has been restarted</h1>"
 
-    # Send info to index.html
-    return render_template("index.html", form=form)
+    # Send info to restart.html
+    return render_template("restart.html", form=form)
 
 
 app.run(host="127.0.0.1", port=8000, debug=True)
