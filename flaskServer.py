@@ -15,6 +15,15 @@ def valid_response(form, field):
         raise ValidationError("That is not the correct answer.")
 
 
+def setup_pickup_data():
+    collection = getattr(mongo.db, "pickups")
+    data = [item for item in collection.find({}, {"_id": 0})]
+    for pug in data:
+        # set up human readable timestamp
+        pug["time"] = time.asctime(time.localtime(pug["time"]))
+    return data
+
+
 class ReusableForm(Form):
     """User entry form for challenge/response check"""
 
@@ -66,6 +75,12 @@ app.config["MONGO_URI"] = "mongodb://localhost:27017/database"
 mongo = PyMongo(app)
 
 
+@app.route('/')
+def home():
+    data = setup_pickup_data()
+    return render_template("pickups.html", data=data)
+
+
 @app.route("/maps")
 def maps():
     collection = getattr(mongo.db, "maps")
@@ -75,11 +90,7 @@ def maps():
 
 @app.route("/pickups")
 def pickups():
-    collection = getattr(mongo.db, "pickups")
-    data = [item for item in collection.find({}, {"_id": 0})]
-    for pug in data:
-        # set up human readable timestamp
-        pug["time"] = time.asctime(time.localtime(pug["time"]))
+    data = setup_pickup_data()
     return render_template("pickups.html", data=data)
 
 
