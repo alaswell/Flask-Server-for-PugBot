@@ -12,7 +12,7 @@ import time
 def valid_response(form, field):
     secret_key = "secret"
     if field.data != secret_key:
-        raise ValidationError("That is not the correct answer.")
+        raise ValidationError("Sorry, that is not the correct answer.")
 
 
 def setup_pickup_data():
