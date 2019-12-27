@@ -2,19 +2,15 @@
 <html lang="en">
 {% extends "layout.html" %}
 {% block content %}
-    <div class ="container">
+    <div class ="container_pickups">
         <center>
         <h1>
-            <center>Pickups</center>
-        </h1>
-
-        <h1>
-            <table border="1">
+            <table id="tbl">
                 <tr>
-                    <td><center>Date</center></td>
-                    <td><center>Map</center></td>
-                    <td><center>Red Team Players</center></td>
-                    <td><center>Blue Team Players</center></td>
+                    <th><center>Date</center></th>
+                    <th><center>Map</center></th>
+                    <th><center>Red Team Players</center></th>
+                    <th><center>Blue Team Players</center></th>
                 </tr>
                 {% for item in data %}
                 <tr>
