@@ -7,6 +7,7 @@ from random import choice
 from wtforms import Form, validators, SubmitField, TextField, ValidationError
 import subprocess
 import time
+import urllib.parse
 
 
 def valid_response(form, field):
@@ -70,8 +71,14 @@ class ReusableForm(Form):
 
 
 app = Flask(__name__)
-app.config["MONGO_DBNAME"] = "database"
-app.config["MONGO_URI"] = "mongodb://localhost:27017/database"
+database = "database"
+key = "password"
+username = "user"
+app.config["MONGO_URI"] = 'mongodb://{un}:{pw}@host.whatever.net/{db}'.format(
+    un=username,
+    pw=key,
+    db=database,
+)
 mongo = PyMongo(app)
 
 
@@ -91,7 +98,7 @@ def maps():
 @app.route("/pickups")
 def pickups():
     data = setup_pickup_data()
-    return render_template("pickups.html", data=data)
+    return render_template("pickups.html", data=reversed(data))
 
 
 @app.route("/servers")
